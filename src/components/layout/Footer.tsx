@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { EnquiryTrigger } from "@/components/enquiry/EnquiryTrigger";
 import { asset } from "@/lib/assets";
 import { legal, nav, site } from "@/content/site";
@@ -14,6 +14,8 @@ import { legal, nav, site } from "@/content/site";
  */
 export function Footer() {
   const pathname = usePathname();
+  const [legalReady, setLegalReady] = useState(false);
+  useEffect(() => setLegalReady(true), []);
   const shop = pathname === "/shop" || pathname.startsWith("/shop/");
   return (
     <footer className="site-footer" id="site-footer">
@@ -136,6 +138,9 @@ export function Footer() {
         <div className="footer-bottom-bar">
           <p>{legal.disclaimer}</p>
           <p>© 2026 Transformation with NNG. All rights reserved.</p>
+          {legalReady && <nav aria-label="Legal policies" style={{ display: "flex", flexWrap: "wrap", gap: "4px 22px", fontSize: "14px", lineHeight: 1.6, width: "100%", paddingTop: "14px" }}>
+            {[["legal", "Legal & contact"], ["terms-and-conditions", "Terms & Conditions"], ["privacy-policy", "Privacy Policy"], ["cancellation-refunds", "Cancellation, Returns & Delivery"], ["disclaimer", "Service Disclaimer"]].map(([slug, label]) => <a key={slug} href={asset(`/${slug}/`)} style={{ display: "inline-flex", alignItems: "center", minHeight: "44px", textDecoration: "underline", textUnderlineOffset: "4px" }}>{label}</a>)}
+          </nav>
         </div>
       </div>
     </footer>
