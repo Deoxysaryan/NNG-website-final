@@ -8,7 +8,7 @@ Policies are proposals, with effective date and commercial rules pending NNG app
 
 The source routes live under public/ as static HTML and share public/legal/policies.css. The typography reuses the existing published landing assets. Build the landing assets alongside these pages, as the existing review build does. Native anchor links intentionally perform full navigation to these static routes.
 
-src/components/layout/Footer.tsx adds accessible policy links after mount, matching the published shared-footer patch. No business content or catalogue media is rebuilt. Add these same links to the landing-page generator footer on the next intentional landing rebuild; the current five published landing footers have been updated in place.
+src/components/layout/Footer.tsx adds accessible policy links after mount, matching the published shared-footer patch. No business content or catalogue media is rebuilt. landing-pages/build-review-v2.mjs carries the same links for future regeneration; the current five published landing footers have been updated in place.
 
 The immutable October 9 published snapshot and its manifests remain untouched. This release is an additive source update, not a claim that the older snapshot equals the later live staging site. All existing media remains remote. No local server, installation or full build is needed for this release.
 
