@@ -30,3 +30,13 @@ QUESTIONS = [
  ('Privacy arrangements', 'Where are records stored, who can access them, which tools generate reports, are sessions recorded, what client data reaches AI tools, and when is information deleted?'),
  ('Final review', 'Confirm formal complaint response/escalation arrangements and obtain legal review before activation. Product rules are deferred until product sales are ready.'),
 ]
+
+# Keep public review copy focused on the policy, not the internal email exchange.
+for page in PAGES.values():
+    page['sections'] = [(key, title, body.replace(
+        'This reply does not settle all pause, early-exit or unused-session cases.',
+        'Pause, early-exit and unused-session arrangements are not yet finalised.'
+    ).replace(
+        "NNG's reply about reports does not confirm whether sessions are recorded or which AI tools, if any, receive client information.",
+        'Session recording and the use of any AI or report-generation tools are not yet confirmed. The final notice must identify any relevant tools, purposes and data involved.'
+    )) for key, title, body in page['sections']]
